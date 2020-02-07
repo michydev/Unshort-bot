@@ -21,7 +21,7 @@ class Utils implements Utilidades {
     }
 
     /**
-	 * @param  [string] 			$string
+	 * @param  [string] 			$url
 	 * @return [string]
 	 */
     
