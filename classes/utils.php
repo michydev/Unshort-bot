@@ -27,13 +27,10 @@ class Utils implements Utilidades {
     
     public static function unshort($url){
         $headers = @get_headers($url);
-        $unshort_url = "";
-        foreach ($headers as $h) {
-            if (substr($h,0,10) == 'Location: ') {
-                $unshort_url = trim(substr($h, 10));
-                break;
-            }
+        $headers = json_encode($headers);
+        if(!empty(preg_match('/Location:\s(?<site>[^"]+)/',  $headers, $match))) {
+            $unshort_url = str_replace('\/', '/', $match['site']);
+            return $unshort_url;
         }
-        return $unshort_url;
     }
 }
